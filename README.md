@@ -11,5 +11,5 @@
 - curl install
 - " >= php 7.1 "
 
-##Run this project
+## Run this project
 - php bin/console server:run
