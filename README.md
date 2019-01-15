@@ -3,6 +3,7 @@
 
 ## Configure Server
 - Change .env/.test to local test
+- Change .env to connect with your Database
 
 
 ## Installation
@@ -13,3 +14,6 @@
 
 ## Run this project
 - php bin/console server:run
+
+// Permet de créer la BDD
+- php bin/console doctrine:database:create
