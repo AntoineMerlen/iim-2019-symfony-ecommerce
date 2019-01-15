@@ -18,13 +18,13 @@ class CollectionFixtures extends Fixture
 
         for ($i = 0; $i<5; $i++)
         {
-            
+
             $name = $faker->word;
 
             $collection = new Collection();
             $collection->setName(ucwords($name));
             $collection->setSlug($slugify->slugify($name));
-            $collection->setPictureUrl('https://via.placeholder.com/1920x570');
+            $collection->setPictureUrl($faker->imageUrl(1920, 720, 'cats'));
             $collection->setDateAdd(new \DateTime());
 
             $manager->persist($collection);
