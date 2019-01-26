@@ -1,19 +1,28 @@
 # iim-2019-symfony-ecommerce
 
 
-## Configure Server
+
+#### Configure Server
+```bash
 - Change .env/.test to local test
 - Change .env to connect with your Database
+```
 
-
-## Installation
+#### Installation
+```bash
 - git clone 
 - composer install
 - curl install
 - " >= php 7.1 "
+```
 
-## Run this project
+#### Run this project
+```bash
 - php bin/console server:run
+```
 
-// Permet de créer la BDD
+#### Création et update de la BDD
+```bash
 - php bin/console doctrine:database:create
+- php bin/console doctrine:schema:update --force
+```
