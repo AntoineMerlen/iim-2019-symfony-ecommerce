@@ -90,6 +90,11 @@ class CartController extends AbstractController
         ]);
     }
 
+
+    /**
+     * @Route("/cart/list", name="list_cart", methods={"GET"})
+     */
+
     public function partial(SessionInterface $session)
     {
         $cartId = $session->get('cart');

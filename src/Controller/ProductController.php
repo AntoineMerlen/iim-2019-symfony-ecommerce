@@ -28,4 +28,16 @@ class ProductController extends AbstractController
             'product' => $product
         ]);
     }
+
+    /**
+     * @Route("/products", name="product_list", methods={"GET"})
+     */
+    public function listProducts()
+    {
+        $repositoryP = $this->getDoctrine()->getRepository(Product::class);
+        $products = $repositoryP->findAll();
+        return $this->render('product/show.html.twig', [
+            'products' => $products
+        ]);
+    }
 }

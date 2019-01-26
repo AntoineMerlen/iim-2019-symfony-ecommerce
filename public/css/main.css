@@ -1107,13 +1107,17 @@ li.sale-noti > a {
 
 .side-menu .sub-menu > li {
   padding-left: 12px;
-  padding-top: 
+  padding-top: 25px;
 }
 
 .side-menu .sub-menu a:hover {
   text-decoration: none;
   padding-left: 20px;
   color: #e65540 !important;
+}
+
+.form_payment{
+    position: center;
 }
 
 .side-menu .sub-menu {
