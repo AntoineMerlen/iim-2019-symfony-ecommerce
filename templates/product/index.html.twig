@@ -1,9 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProductController!{% endblock %}
+{% block title %}Fiche Produit{% endblock %}
 
 {% block body %}
-    <button id="add-to-cart">Add to cart</button>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nom du produit</th>
+            <th>Description</th>
+            <th>Prix</th>
+            <th>Nombre de produit disponible</th>
+            <th>Mettre dans le panier</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.slug }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.stock }}</td>
+                <td><button id="add-to-cart">Add to cart</button></td>
+            </tr>
+        </tbody>
+    </table>
 {% endblock %}
 
 {% block javascripts %}
