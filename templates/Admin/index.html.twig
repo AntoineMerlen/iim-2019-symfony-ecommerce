@@ -4,15 +4,24 @@
 
 {% block body %}
 
-    <!-- Slide1 -->
-    <section class="slide1">
-        <div class="wrap-slick1">
-            <div class="slick1">
-                {% for collection in collections %}
-                    {% include 'index/partials/slide.html.twig' %}
-                {% endfor %}
-            </div>
-        </div>
-    </section>
+
+    <h1>Dashboard</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Users</th>
+            <th>Collections</th>
+            <th>Produits</th>
+        </tr>
+        </thead>
+        <tbody>
+            <td><a href="{{ path('admin_user_list') }}" class="btn btn-info" role="button">C'est par ici !</a></td>
+            <td><a href="#" class="btn btn-danger" role="button">Par là !</a></td>
+            <td><a href="{{ path('admin_product_list') }}" class="btn btn-success" role="button">Ou bien par là !</a></td>
+        </tbody>
+
+    </table>
+
 
 {% endblock body %}
