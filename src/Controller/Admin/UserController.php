@@ -30,6 +30,7 @@ class UserController extends AbstractController
      */
     public function new(Request $request): Response
     {
+
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -42,10 +43,11 @@ class UserController extends AbstractController
             return $this->redirectToRoute('admin_user_list');
         }
 
-        return $this->render('admin/user/new.html.twig', [
+        return $this->render('admin/user/index.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
         ]);
+
     }
 
     /**
