@@ -41,6 +41,16 @@ class User implements UserInterface
      */
     private $carts;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $livraison_facturation;
+
+    /**
+     * @ORM\Column(type="string", length=25)
+     */
+    private $username;
+
     public function __construct()
     {
         $this->carts = new ArrayCollection();
@@ -70,7 +80,13 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string) $this->username;
+    }
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
+
+        return $this;
     }
 
     /**
@@ -154,4 +170,18 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function getLivraisonFacturation(): ?string
+    {
+        return $this->livraison_facturation;
+    }
+
+    public function setLivraisonFacturation(string $livraison_facturation): self
+    {
+        $this->livraison_facturation = $livraison_facturation;
+
+        return $this;
+    }
+
+
 }
