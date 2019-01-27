@@ -2,27 +2,27 @@
 
 namespace App\Form;
 
-use App\Entity\User;
+use App\Entity\Collection;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserType extends AbstractType
+class CollectionType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email')
-            ->add('password')
-            ->add('livraison_facturation')
-            ->add('username')
+            ->add('name')
+            ->add('slug')
+            ->add('pictureUrl')
+            ->add('dateAdd')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
+            'data_class' => Collection::class,
         ]);
     }
 }
