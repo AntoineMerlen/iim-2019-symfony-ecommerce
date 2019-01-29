@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/admin/user")
@@ -28,7 +29,7 @@ class UserController extends AbstractController
     /**
      * @Route("/new", name="admin_user_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
 
         $user = new User();
@@ -36,6 +37,18 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user->setPassword(
+                $passwordEncoder->encodePassword(
+                    $user,
+                    $form->get('password')->getData()
+                )
+            );
+
+            $user->setRoles([
+                'ROLE_USER'
+            ]);
+
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
@@ -43,7 +56,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute('admin_user_list');
         }
 
-        return $this->render('admin/user/index.html.twig', [
+        return $this->render('Admin/user/new.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
         ]);
