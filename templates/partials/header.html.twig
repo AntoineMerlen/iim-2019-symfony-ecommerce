@@ -9,6 +9,27 @@
                     <img src="https://via.placeholder.com/120x27" alt="IMG-LOGO">
                 </a>
 
+
+                <!-- Menu -->
+                <div class="wrap_menu">
+                    <nav class="menu">
+                        <ul class="main_menu">
+                            <li>
+                                <a href="{{ path('index_admin') }}">Dashboard</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('admin_user_list') }}">Users</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('admin_collection_list') }}">Collections</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('admin_product_list') }}">Products</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
                 <!-- Header Icon -->
                 <div class="header-icons">
                     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
