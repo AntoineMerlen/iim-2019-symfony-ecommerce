@@ -88,7 +88,15 @@ class AppAuthenticator extends AbstractFormLoginAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
-        if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
+
+        if (in_array('ROLE_ADMIN', $token->getUser()->getRoles() ))
+        {
+            return new RedirectResponse($this->router->generate('index_admin'));
+        }
+
+
+        if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey))
+        {
             return new RedirectResponse($targetPath);
         }
 
@@ -105,7 +113,8 @@ class AppAuthenticator extends AbstractFormLoginAuthenticator
             $this->entityManager->flush();
         }
 
-        return new RedirectResponse($this->router->generate('index'));
+      	return new RedirectResponse($this->router->generate('index'));
+
     }
 
     protected function getLoginUrl()
