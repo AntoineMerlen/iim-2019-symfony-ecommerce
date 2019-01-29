@@ -3,13 +3,31 @@
 {% block title %}Hello CartController!{% endblock %}
 
 {% block body %}
-    <style>
-        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    </style>
+    <h1>Cart</h1>
 
-    <div class="example-wrapper">
-        <h1>Hello {{ controller_name }}! ✅</h1>
-        
-    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Produits</th>
+            <th>Nombre de Produits</th>
+            <th>Prix Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for cartProduct in cart.cartProducts %}
+            {% set product = cartProduct.product %}
+            <tr>
+                <td>{{ cart.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.slug }}</td>
+                <td>{{ cart.total }} €</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

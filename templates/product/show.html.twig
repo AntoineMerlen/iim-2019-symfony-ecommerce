@@ -29,6 +29,7 @@
                 <td>{{ product.sku }}</td>
                 <td>{{ product.pictureUrl }}</td>
                 <td>{{ product.dateAdd ? product.dateAdd|date('Y-m-d H:i:s') : '' }}</td>
+                <td><a  href="{{ path('product', {'slug': product.slug}) }}" class="btn btn-success" >Show</a></td>
             </tr>
         {% else %}
             <tr>
