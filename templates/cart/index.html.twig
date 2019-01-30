@@ -3,31 +3,34 @@
 {% block title %}Hello CartController!{% endblock %}
 
 {% block body %}
-    <h1>Cart</h1>
+    <div>
+        <ul class="header-cart-wrapitem cartAllProducts">
+            {% for cartProduct in cart.cartProducts %}
+                {% set product = cartProduct.product %}
+                <li class="header-cart-item">
+                    <div class="header-cart-item-img">
+                        <img src="{{ product.pictureUrl }}" alt="{{ "Photo de " ~ product.name }}">
+                    </div>
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Produits</th>
-            <th>Nombre de Produits</th>
-            <th>Prix Total</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for cartProduct in cart.cartProducts %}
-            {% set product = cartProduct.product %}
-            <tr>
-                <td>{{ cart.id }}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.slug }}</td>
-                <td>{{ cart.total }} €</td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="9">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                    <div class="header-cart-item-txt">
+                        <a href="{{ path('product', {'slug': product.slug}) }}" class="header-cart-item-name">
+                            {{ product.name }}
+                        </a>
+
+                        <span class="header-cart-item-info">
+                        {{ cartProduct.quantity }} x {{ price_format(product.price) }}
+                    </span>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <div>
+            Total: {{ price_format(cart.total) }}
+            <div class="col-md-3 col-sm-10">
+                <a href="{{ path('checkout_payment') }}" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                    Check out
+                </a>
+            </div>
+        </div>
+    </div>
 {% endblock %}
